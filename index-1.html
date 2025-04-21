@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>证书下载中心</title>
+    <style>
+        body { text-align: center; padding: 20px; font-family: Arial; }
+        input { padding: 8px; margin: 10px; width: 200px; }
+        button { padding: 8px 20px; background: #007bff; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>证书自助下载</h1>
+    <p>请输入您的姓名（需与报名信息一致）：</p>
+    <input type="text" id="name" placeholder="例如：张三">
+    <button onclick="searchCertificate()">查询证书</button>
+
+    <script>
+        // 证书映射表：学员姓名 → GitHub 直链
+        const certMap = {
+            "张三": "https://gitee.com/LL-135/test/raw/master/33.pdf",
+            "李四": "https://gitee.com/LL-135/test/raw/master/44.pdf"
+            // 按此格式添加更多学员
+        };
+
+        function searchCertificate() {
+            const name = document.getElementById("name").value.trim();
+            const link = certMap[name];
+            if (link) {
+                window.open(link, "_blank"); // 新标签页打开下载
+            } else {
+                alert("未找到您的证书，请检查姓名是否输入正确！");
+            }
+        }
+    </script>
+</body>
+</html>
